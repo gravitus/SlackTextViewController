@@ -40,11 +40,8 @@ class MessageViewController: SLKTextViewController {
     func commonInit() {
         
         NotificationCenter.default.addObserver(self.tableView, selector: #selector(UITableView.reloadData), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
-        NotificationCenter.default.addObserver(self,  selector: #selector(MessageViewController.textInputbarDidMove(_:)), name: NSNotification.Name.SLKTextInputbarDidMove, object: nil)        
-    }
-    
-    override func viewDidLoad() {
-
+        NotificationCenter.default.addObserver(self,  selector: #selector(MessageViewController.textInputbarDidMove(_:)), name: NSNotification.Name.SLKTextInputbarDidMove, object: nil)
+        
         // Register a SLKTextView subclass, if you need any special appearance and/or behavior customisation.
         self.registerClass(forTextView: MessageTextView.classForCoder())
         
@@ -52,7 +49,10 @@ class MessageViewController: SLKTextViewController {
             // Register a UIView subclass, conforming to SLKTypingIndicatorProtocol, to use a custom typing indicator view.
             self.registerClass(forTypingIndicatorView: TypingIndicatorView.classForCoder())
         }
-
+    }
+    
+    override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.commonInit()
@@ -474,7 +474,7 @@ extension MessageViewController {
         }
     }
     
-    override func shouldProcessTextForAutoCompletion() -> Bool {
+    override func shouldProcessText(forAutoCompletion text: String) -> Bool {
         return true
     }
     
