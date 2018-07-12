@@ -111,7 +111,7 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
     [super layoutIfNeeded];
 }
 
-/// Compensate for layout bug in iOS 11 Beta 2
+// Compensate for layout bug in iOS 11 Beta 2
 - (void)layoutSubviews
 {
     [super layoutSubviews];
